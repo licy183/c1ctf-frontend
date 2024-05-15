@@ -11,9 +11,11 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.use(BootstrapVue);
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faAngleRight, faAward } from '@fortawesome/free-solid-svg-icons'
+import { faAngleRight, faCloud} from '@fortawesome/free-solid-svg-icons'
+import { faCheckCircle} from '@fortawesome/free-regular-svg-icons'
+
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-library.add(faAngleRight, faAward);
+library.add(faAngleRight, faCheckCircle, faCloud);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 Vue.config.productionTip = false;

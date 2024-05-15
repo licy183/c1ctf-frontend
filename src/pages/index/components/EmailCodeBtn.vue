@@ -43,10 +43,11 @@
             },
             emailTimerLoop() {
                 if (this.emailWaitTime > 1){
-                    this.emailWaitTime -= 1
+                    this.emailWaitTime -= 1;
                 } else {
                     clearInterval(this.emailTimer);
-                    this.sendCodeDisable = false
+                    this.emailWaitTime = 30;
+                    this.sendCodeDisable = false;
                 }
             },
             sendCode() {

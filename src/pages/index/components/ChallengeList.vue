@@ -22,9 +22,12 @@
                                     {{j.score}}
                                 </b-col>
                                 <b-col cols="1" class="no-padding-left">
-                                    <template v-if="challenge.solved_challenge.includes(j.challenge_id)">
-                                        <b-badge variant="success" pill>&#x2713;</b-badge>
-                                    </template>
+                                  <span v-b-tooltip.hover title="已创建环境" class="text-info" v-if="container.created_container.includes(j.challenge_id)">
+                                    <font-awesome-icon :icon="['fas', 'cloud']" v-b-tooltip.hover/>
+                                  </span>
+                                  <span v-b-tooltip.hover title="已解决" v-if="challenge.solved_challenge.includes(j.challenge_id)">
+                                     <font-awesome-icon class="text-success" :icon="['far', 'check-circle']"/>
+                                  </span>
                                 </b-col>
 
                             </b-row>
@@ -46,7 +49,7 @@
     export default {
         name: "ChallengeList",
         computed: {
-            ...mapState(['challenge', 'user']),
+            ...mapState(['challenge', 'user', 'container']),
             matchIsOpen() {
                 return match.isOpen;
             },

@@ -1,4 +1,5 @@
-// vue.config.js
+const proxy_url = 'http://127.0.0.1:8082';
+
 module.exports = {
   // options...
   pages: {
@@ -11,6 +12,16 @@ module.exports = {
       entry: 'src/pages/admin/main.js',
       template: 'public/index.html',
       filename: 'admin.html',
+    },
+  },
+  devServer: {
+    proxy: {
+      '/api': {
+        target: proxy_url,
+        ws: true,
+        changeOrigin: true,
+        // pathRewrite: {'^/api' : '/c1ctf/api'}
+      }
     },
   },
   chainWebpack: config => {

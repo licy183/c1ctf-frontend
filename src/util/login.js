@@ -1,12 +1,20 @@
 import router from "@/pages/index/router";
 import store from "@/store/index";
 import api from "@/util/api"
-import {SET_LOGOUT, SET_TOKEN_LOGIN, SET_USERNAME, SET_IS_ADMIN, CLEAR_CHALLENGE} from "@/util/store-types";
+import {
+    SET_LOGOUT,
+    SET_TOKEN_LOGIN,
+    SET_USERNAME,
+    SET_IS_ADMIN,
+    CLEAR_CHALLENGE,
+    CLEAR_CONTAINER
+} from "@/util/store-types";
 
 let login = new class Login {
     logout () {
         store.commit(SET_LOGOUT);
         store.commit(CLEAR_CHALLENGE);
+        store.commit(CLEAR_CONTAINER);
         sessionStorage.removeItem('token');
         localStorage.removeItem('token');
         try{

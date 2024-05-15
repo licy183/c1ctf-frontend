@@ -59,7 +59,7 @@
                             </b-form-radio-group>
                         </b-form-group>
                         </b-col>
-                        <b-col md v-if="regForm['user_type'] === 1"> <!--on_campus -->
+                        <b-col md v-if="regForm['user_type'] == 1"> <!--on_campus -->
                             <b-form-group label="学生信息" label-for="student_id">
                                 <b-input-group>
                                     <b-form-input id="student_id" v-model="regForm['student_id']" type="text" :state="formState['student_id']" required autocomplete="on" placeholder="学号" :disabled="studentIdVerifyDisable"></b-form-input>
@@ -163,7 +163,7 @@ export default {
                 api.post('/user/register',{
                     email: this.regForm['email'],
                     verify_code: this.regForm['code'],
-                    is_student: this.regForm['user_type'] === 1,
+                    is_student: this.regForm['user_type'] == 1,
                     student_id: this.regForm['student_id'],
                     student_name: this.regForm['student_name'],
                     username: this.regForm['username'],

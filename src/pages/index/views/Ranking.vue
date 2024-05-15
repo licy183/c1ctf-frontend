@@ -8,7 +8,13 @@
                     <line-chart ref="chart" :styles="{height: '300px', position: 'relative'}" :chartdata="chartData" :options="chartOptions"/>
                 </b-card>
 
-                <b-card no-body class="mt-3">
+                <b-card class="mt-3 position-relative" no-body>
+                    <b-form-group class="m-1 position-absolute float-right rank-selector">
+                        <b-form-radio-group v-model="student_only" @change="loadRanking" buttons button-variant="outline-primary" :disabled="loading">
+                            <b-form-radio :value="false">全员</b-form-radio>
+                            <b-form-radio :value="true">校内</b-form-radio>
+                        </b-form-radio-group>
+                    </b-form-group>
                     <b-table :busy="loading" table-class="border-bottom" :per-page="page_size"
                              :current-page="current_page" :items="items" :fields="fields">
                         <template v-slot:table-busy>
@@ -18,6 +24,7 @@
                             </div>
                         </template>
                     </b-table>
+
 <!--                    <b-pagination v-model="current_page" :total-rows="total_pages" :per-page="page_size"-->
 <!--                                  align="center"></b-pagination>-->
                 </b-card>
@@ -117,6 +124,7 @@
 
                 ],
                 loading: true,
+                student_only: false,
             }
         },
         computed: {
@@ -127,7 +135,7 @@
         methods: {
             loadRanking() {
                 this.loading = true;
-                api.get('/rank/get_ranking_list').then(r => {
+                api.get(this.student_only ? '/rank/get_student_ranking_list' : '/rank/get_ranking_list').then(r => {
                     // this.total_pages = r.total_pages;
                     let items = [];
                     // let rank = (this.current_page - 1) * this.page_size + 1;
@@ -139,7 +147,7 @@
                     this.items = items;
                     this.loading = false;
                 });
-                api.get('/rank/get_ranking_chart').then(r => {
+                api.get(this.student_only ? '/rank/get_student_ranking_chart' : '/rank/get_ranking_chart').then(r => {
                     this.chartData.datasets = [];
                     for (let rank in r) {
                         let points = [];
@@ -174,7 +182,12 @@
 
 <style scoped>
     .border-bottom {
-        border-bottom: 1px solid #dee2e6 !important;
+        border-bottom: 0 !important;
+        margin-bottom: 0;
     }
 
+    .rank-selector{
+        right: 0;
+        z-index: 2;
+    }
 </style>

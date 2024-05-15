@@ -1,4 +1,25 @@
-# frontend
+# c1ctf-frontend
+
+## 配置修改
+
+### 生产环境配置文件
+
+```
+.env 
+```
+
+### 开发环境配置文件
+
+```
+.env.development
+```
+
+修改vue.config.js
+
+```
+const proxy_url = 'http://127.0.0.1:8082/api';
+```
+
 
 ## Project setup
 ```

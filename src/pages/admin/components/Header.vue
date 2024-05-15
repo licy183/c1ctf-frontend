@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <el-row class="header-row" style="display: flex; align-items:center; ">
-          {{ process.env.VUE_APP_CTF_NAME }} 后台管理
+          {{CTF_NAME}} 后台管理
             <el-dropdown style="line-height: normal; margin-left:auto;margin-right: 20px;">
               <span>
                 {{user.username}}<i class="el-icon-arrow-down el-icon--right"></i>
@@ -20,6 +20,11 @@
     import {mapState} from "vuex"
     export default {
         name: "Header",
+        data () {
+          return {
+            CTF_NAME: process.env.VUE_APP_CTF_NAME
+          }
+        },
         computed: mapState([
             'user'
         ]),

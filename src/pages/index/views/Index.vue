@@ -1,6 +1,6 @@
 <template>
     <b-container class="mt-3">
-        <b-row class="mt-3 d-flex justify-content-center" >
+        <b-row class="mt-3 d-flex justify-content-center">
             <b-col cols="12">
                 <match-timer/>
                 <b-card class="mt-3">
