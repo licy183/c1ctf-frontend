@@ -29,6 +29,14 @@
                     </el-date-picker>
                 </el-form-item>
             </el-row>
+
+            <el-row>
+                <el-col :span="4">
+                    <el-form-item label="按 IP 限制登录次数">
+                        <el-switch v-model="login_limit"></el-switch>
+                    </el-form-item>
+                </el-col>
+            </el-row>
         </el-card>
         <el-card header="动态积分设置" shadow="never">
             <el-row>
@@ -82,6 +90,7 @@ export default {
             dynamic_score_min: undefined,
             container_count: undefined,
             container_flag_format: undefined,
+            login_limit: undefined,
         }
     },
     computed: {},
@@ -95,6 +104,7 @@ export default {
                 dynamic_score_min: this.dynamic_score_min,
                 container_count: this.container_count,
                 container_flag_format: this.container_flag_format,
+                login_limit: this.login_limit,
             }).then(() => {
                 this.$message({showClose: true, message: '保存成功', type: 'success'});
             }).catch((e) => {
@@ -111,6 +121,7 @@ export default {
             this.dynamic_score_min = r.dynamic_score_min;
             this.container_count = r.container_count;
             this.container_flag_format = r.container_flag_format;
+            this.login_limit = r.login_limit;
         }).catch((e) => {
             this.$message({showClose: true, message: '配置信息加载失败：' + e, type: 'error'});
         })
