@@ -6,6 +6,7 @@ import {
     SET_TOKEN_LOGIN,
     SET_USERNAME,
     SET_IS_ADMIN,
+    SET_UNREAD_BULLETIN,
     CLEAR_CHALLENGE,
     CLEAR_CONTAINER
 } from "@/util/store-types";
@@ -34,6 +35,7 @@ let login = new class Login {
                 api.get('/user/get_curr_user').then((r) => {
                     store.commit(SET_USERNAME, r.username);
                     store.commit(SET_IS_ADMIN, r.is_admin);
+                    store.commit(SET_UNREAD_BULLETIN, r.have_unread_bulletin);
                     resolve(r)
                 }).catch((e) => {
                     if (e.response != null && e.response.status === 400) {

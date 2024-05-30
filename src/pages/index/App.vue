@@ -1,7 +1,7 @@
 
 <template>
   <div id="app">
-    <b-navbar toggleable="sm" variant="light" fixed="top" sticky>
+    <b-navbar toggleable="sm" variant="light" class="navbar-themed" fixed="top" sticky>
       <b-navbar-brand to="/">{{CTF_NAME}}</b-navbar-brand>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
@@ -10,8 +10,12 @@
             <b-nav-item :to="{name: 'Challenge'}" active-class="active">题目</b-nav-item>
             <b-nav-item :to="{name: 'Submit'}" active-class="active">提交答案</b-nav-item>
           </template>
-          <b-nav-item :to="{name: 'Bulletin'}" active-class="active" exact>公告</b-nav-item>
-          <b-nav-item :to="{name: 'Ranking'}" active-class="active" exact>排行榜</b-nav-item>
+          <b-nav-item :to="{name: 'Bulletin'}" active-class="active" exact>
+              公告
+              <font-awesome-icon class="align-top text-danger" style="font-size: 5px" :icon="['fas', 'circle']"  v-if="user.have_unread_bulletin"/>
+          </b-nav-item>
+
+            <b-nav-item :to="{name: 'Ranking'}" active-class="active" exact>排行榜</b-nav-item>
 
         </b-navbar-nav>
         <!-- 靠右对齐 -->
@@ -27,8 +31,24 @@
             </b-nav-item-dropdown>
           </template>
           <template v-else>
+            <b-nav-item link-classes="text-primary" href="https://cas-test.c1sec.club/cas/login?service=https://cas-test.c1sec.club/cas/login" active-class="active" exact>校内用户登录</b-nav-item>
             <b-nav-item :to="{ name: 'Login'}" active-class="active" exact>登录</b-nav-item>
           </template>
+            <!-- 暗黑模式 先跟随系统，暂不给用户自行选择-->
+<!--            <b-nav-form>-->
+<!--                <span class="mx-1" role="button" title="浅色模式" v-if="dark_mode">-->
+<!--                    <font-awesome-icon :icon="['far', 'sun']" />-->
+<!--                </span>-->
+<!--                <span  class="mx-1" role="button" title="深色模式" v-else>-->
+<!--                    <font-awesome-icon :icon="['far', 'moon']" />-->
+<!--                </span>-->
+<!--                <span class="mx-1" role="button" title="跟随系统">-->
+<!--                    <font-awesome-icon :icon="['fas', 'desktop']"/>-->
+<!--                </span>-->
+<!--            </b-nav-form>-->
+
+
+
         </b-navbar-nav>
       </b-collapse>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -55,9 +75,14 @@
         CTF_NAME: process.env.VUE_APP_CTF_NAME
       }
     },
-    computed: mapState([
-      'user'
-    ]),
+    computed: {
+        ...mapState([
+            'user'
+        ]),
+        dark_mode() {
+            return false;
+        }
+    },
     created () {
 
     },
@@ -105,7 +130,7 @@
 
 </script>
 
-<style>
+<style lang="css">
   /*#app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;

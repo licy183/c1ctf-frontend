@@ -10,11 +10,12 @@
                     <h5>比赛时间</h5>
                     <p>1970-01-01 00:00:00 - 1970-01-01 20:00:00 (中国标准时间)</p>
                     <h5>报名方式</h5>
-                    <p>参赛选手需在比赛平台注册，比赛相关通知见QQ群:<b-link target="_blank"  href="qqlink">这是QQ群号</b-link>。</p>
+                    <p>参赛选手需在比赛平台注册，本校学生请使用校内统一认证登录。</p>
+                    <p>比赛相关通知见QQ群:<b-link target="_blank"  href="qqlink">这是QQ群号</b-link>。</p>
                     <p>校内选手务必在注册时选择<b>校内用户</b></p>
                     <p>平台地址：<b-link>https://c1ctf.c1sec.club/c1ctf2019/</b-link></p>
                     <h5>比赛方式</h5>
-                    <p>个人参赛，选手可在规定的竞赛时间内自行答题。</p>
+                    <p>个人参赛，不允许组队，选手可在规定的竞赛时间内自行答题。</p>
                     <h5>评分标准</h5>
                     <li>竞赛成绩排名(80%)</li>
                     <p>将Web、Misc、Crypto、Reverse、Pwn五个方向分数总和作为比赛结果评定主要依据。</p>
@@ -34,8 +35,6 @@
                     <li>如发现比赛平台漏洞，及时联系邮箱：contact[at]c1sec.club，有适当加分奖励。</li>
                 </b-card>
             </b-col>
-
-
         </b-row>
     </b-container>
 </template>

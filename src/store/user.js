@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import {SET_TOKEN, SET_ISAUTH , SET_LOGOUT , SET_USERNAME , SET_LOGIN, SET_TOKEN_LOGIN, SET_IS_ADMIN} from '@/util/store-types'
+import {SET_TOKEN, SET_ISAUTH , SET_LOGOUT , SET_USERNAME , SET_LOGIN, SET_TOKEN_LOGIN, SET_IS_ADMIN, SET_UNREAD_BULLETIN} from '@/util/store-types'
 
 const state = {
     is_authenticated: false,
@@ -7,6 +7,7 @@ const state = {
     token: '',
     is_admin: false,
     is_student: false,
+    have_unread_bulletin: false,
 };
 const getters = {
     // getters 类似 computed
@@ -29,6 +30,7 @@ const mutations = {
         state.token = '';
         state.is_authenticated = false;
         state.username = '';
+        state.have_unread_bulletin = false;
     },
     [SET_LOGIN] (state, payload) {
         state.token = payload.token;
@@ -47,6 +49,9 @@ const mutations = {
         // commit(SET_ISAUTH, true);
         // commit()
     },
+    [SET_UNREAD_BULLETIN] (state, value) {
+        state.have_unread_bulletin = value;
+    }
 };
 const actions = {
     // [CHECK_LOGIN] ({ commit }) {

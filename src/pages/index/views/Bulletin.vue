@@ -28,6 +28,8 @@
 <script>
     import api from '@/util/api'
     import time from "@/util/time";
+    import store from "@/store/index";
+    import {SET_UNREAD_BULLETIN} from "@/util/store-types";
     export default {
         name: "bulletin",
         components: {},
@@ -47,8 +49,8 @@
         mounted() {
             api.get('/bulletin/get_all_bulletin').then((bulletins) => {
                 this.bulletins = bulletins;
-
-            })
+            });
+            store.commit(SET_UNREAD_BULLETIN, false);
         }
     }
 </script>

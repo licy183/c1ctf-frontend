@@ -3,7 +3,7 @@
     <div class="mt-5 mb-2 d-flex justify-content-center">
         <b-col sm="11" xs="11" md="8" lg="6">
             <b-card>
-                <b-card-title class="text-dark text-center">注册</b-card-title>
+                <b-card-title class="text-center">注册</b-card-title>
                 <b-container>
 
                 <b-link :to="{ name: 'Login'}" class="float-right mr-auto">已有帐号？立即登录</b-link>
@@ -55,7 +55,9 @@
                         <b-form-group label="用户类型" description="此项内容注册后不可修改，请慎重填写" >
                             <b-form-radio-group v-model="regForm['user_type']" name="user_type" required>
                                 <b-form-radio value="0">校外用户</b-form-radio> <!--off_campus -->
-                                <b-form-radio value="1">校内用户</b-form-radio> <!--on_campus -->
+                                <b-form-radio value="1" v-b-tooltip.hover
+                                              title="校内用户请在右上方请直接登录，如无法登录请先以校外用户注册，再联系管理员修改类型"
+                                              disabled>校内用户</b-form-radio> <!--on_campus -->
                             </b-form-radio-group>
                         </b-form-group>
                         </b-col>
@@ -93,7 +95,9 @@ export default {
     data() {
             return {
                 selected: '1',
-                regForm: {},
+                regForm: {
+                    user_type: 0,
+                },
                 formState: {},
                 formMsg: {},
                 studentIdVerifyDisable: false,

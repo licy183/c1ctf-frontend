@@ -10,7 +10,7 @@ module.exports = {
     },
     admin: {
       entry: 'src/pages/admin/main.js',
-      template: 'public/index.html',
+      template: 'public/admin.html',
       filename: 'admin.html',
     },
   },
@@ -23,6 +23,11 @@ module.exports = {
         // pathRewrite: {'^/api' : '/c1ctf/api'}
       }
     },
+    // before(app) {
+    //   const path = require('path')
+    //   const apiMocker = require('webpack-api-mocker');
+    //   apiMocker(app, path.resolve(__dirname, "./mock/index"));
+    // } ,
   },
   chainWebpack: config => {
     if (process.env.NODE_ENV === 'production') {
@@ -39,6 +44,14 @@ module.exports = {
           //   chunks: "all"
           // }
         }});
+      // config.rules.append({
+      //   test: /\.scss$/,
+      //   use: [
+      //     'vue-style-loader',
+      //     'css-loader',
+      //     'sass-loader'
+      //   ]
+      // });
     }
   },
   runtimeCompiler: true,

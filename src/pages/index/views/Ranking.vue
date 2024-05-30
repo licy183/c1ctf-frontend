@@ -8,9 +8,9 @@
                     <line-chart ref="chart" :styles="{height: '300px', position: 'relative'}" :chartdata="chartData" :options="chartOptions"/>
                 </b-card>
 
-                <b-card class="mt-3 position-relative" no-body>
-                    <b-form-group class="m-1 position-absolute float-right rank-selector">
-                        <b-form-radio-group v-model="student_only" @change="loadRanking" buttons button-variant="outline-primary" :disabled="loading">
+                <b-card class="mt-3" no-body>
+                    <b-form-group class="m-1">
+                        <b-form-radio-group class="float-right" v-model="student_only" @change="loadRanking" buttons button-variant="outline-primary" :disabled="loading">
                             <b-form-radio :value="false">全员</b-form-radio>
                             <b-form-radio :value="true">校内</b-form-radio>
                         </b-form-radio-group>
@@ -186,8 +186,4 @@
         margin-bottom: 0;
     }
 
-    .rank-selector{
-        right: 0;
-        z-index: 2;
-    }
 </style>

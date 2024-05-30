@@ -3,6 +3,7 @@ export const SET_ISAUTH = 'SET_ISAUTH';
 export const SET_LOGOUT = 'SET_LOGOUT';
 export const SET_USERNAME = 'SET_USERNAME';
 export const SET_IS_ADMIN = 'SET_IS_ADMIN';
+export const SET_UNREAD_BULLETIN = 'SET_UNREAD_BULLETIN';
 
 export const SET_LOGIN = 'SET_LOGIN';
 export const SET_TOKEN_LOGIN = 'SET_TOKEN_LOGIN';

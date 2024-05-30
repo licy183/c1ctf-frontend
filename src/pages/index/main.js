@@ -2,20 +2,27 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from '@/pages/index/App'
-import BootstrapVue from 'bootstrap-vue'
+import { BootstrapVue } from 'bootstrap-vue'
 import router from '@/pages/index/router'
 import store from "@/store";
 
 import 'bootstrap/dist/css/bootstrap.css'
+
+import '@forevolve/bootstrap-dark/dist/css/bootstrap-prefers-dark.css'
+// import '@forevolve/bootstrap-dark/dist/css/toggle-bootstrap.css'
+// import '@forevolve/bootstrap-dark/dist/css/toggle-bootstrap-dark.css'
+// import '@forevolve/bootstrap-dark/dist/css/toggle-bootstrap-print.css'
+
+
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.use(BootstrapVue);
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faAngleRight, faCloud} from '@fortawesome/free-solid-svg-icons'
-import { faCheckCircle} from '@fortawesome/free-regular-svg-icons'
+import { faAngleRight, faCloud, faDesktop, faCircle} from '@fortawesome/free-solid-svg-icons'
+import { faCheckCircle, faSun, faMoon} from '@fortawesome/free-regular-svg-icons'
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-library.add(faAngleRight, faCheckCircle, faCloud);
+library.add(faAngleRight, faCheckCircle, faCloud, faSun, faMoon, faDesktop, faCircle);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 Vue.config.productionTip = false;

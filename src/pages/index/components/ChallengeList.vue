@@ -11,7 +11,7 @@
                         <b-list-group-item
                                 v-bind:key="j.challenge_id"
                                 :to="{ name: 'ChallengeDetail', params: { challenge_id: j.challenge_id }}"
-                                class="" v-if="matchIsStarted || challenge.solved_challenge.includes(j.challenge_id) || user.is_admin">
+                                class="" v-if="matchIsOpen || challenge.solved_challenge.includes(j.challenge_id) || user.is_admin">
 
                             <b-row class="align-items-center">
 
